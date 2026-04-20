@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>岳星 · Starlet — 个人简历</title>
+  <meta name="description" content="岳星（Starlet）的个人简历与作品集 — 商业化运营 / 数据分析 / 内容策略" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ===================== RESET & BASE ===================== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+    body {
+      font-family: 'Inter', 'Noto Serif SC', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0a0a1a;
+      color: #e0e0ec;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ===================== STAR CANVAS ===================== */
+    #starfield {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    }
+
+    /* ===================== NAV ===================== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(10,10,26,0.75); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: background 0.3s;
+    }
+    nav .nav-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 24px; height: 56px;
+    }
+    nav .logo {
+      font-size: 1.15rem; font-weight: 700; letter-spacing: 0.04em;
+      background: linear-gradient(135deg, #a78bfa, #60a5fa);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    nav .nav-links { display: flex; gap: 28px; list-style: none; }
+    nav .nav-links a {
+      font-size: 0.88rem; font-weight: 400; opacity: 0.7; transition: opacity 0.25s;
+      letter-spacing: 0.02em;
+    }
+    nav .nav-links a:hover { opacity: 1; }
+    @media (max-width: 768px) {
+      nav .nav-links { gap: 16px; }
+      nav .nav-links a { font-size: 0.8rem; }
+    }
+
+    /* ===================== SECTIONS ===================== */
+    section {
+      position: relative; z-index: 1;
+      max-width: 1100px; margin: 0 auto;
+      padding: 100px 24px 60px;
+    }
+    .section-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.6rem; font-weight: 700; margin-bottom: 48px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-title .star-icon {
+      font-size: 1.2rem;
+      background: linear-gradient(135deg, #fbbf24, #f59e0b);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .section-title::after {
+      content: ''; flex: 1; height: 1px;
+      background: linear-gradient(90deg, rgba(255,255,255,0.15), transparent);
+    }
+
+    /* ===================== HERO ===================== */
+    #hero {
+      min-height: 100vh; display: flex; flex-direction: column;
+      justify-content: center; align-items: center; text-align: center;
+      padding-top: 0; padding-bottom: 40px;
+    }
+    .hero-avatar {
+      width: 120px; height: 120px; border-radius: 50%;
+      background: linear-gradient(135deg, #a78bfa, #60a5fa);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem; font-weight: 700; color: #fff;
+      margin-bottom: 32px; box-shadow: 0 0 60px rgba(167,139,250,0.3);
+      position: relative;
+    }
+    .hero-avatar::after {
+      content: ''; position: absolute; inset: -4px; border-radius: 50%;
+      border: 2px solid rgba(167,139,250,0.3);
+      animation: pulse-ring 3s ease-in-out infinite;
+    }
+    @keyframes pulse-ring {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.1); opacity: 0.2; }
+    }
+    .hero-name {
+      font-family: 'Noto Serif SC', serif;
+      font-size: clamp(2.4rem, 6vw, 3.6rem);
+      font-weight: 700; margin-bottom: 8px;
+      background: linear-gradient(135deg, #e0e7ff, #a78bfa, #60a5fa);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero-en {
+      font-size: 1rem; opacity: 0.5; letter-spacing: 0.3em;
+      text-transform: uppercase; margin-bottom: 20px;
+    }
+    .hero-tagline {
+      font-size: 1.15rem; opacity: 0.75; max-width: 520px;
+      margin-bottom: 36px;
+    }
+    .hero-tags {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
+      margin-bottom: 40px;
+    }
+    .hero-tags span {
+      padding: 6px 18px; border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.82rem; opacity: 0.7;
+      background: rgba(255,255,255,0.03);
+    }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 36px; border-radius: 999px;
+      background: linear-gradient(135deg, #a78bfa, #60a5fa);
+      color: #fff; font-weight: 600; font-size: 0.95rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 24px rgba(167,139,250,0.3);
+    }
+    .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(167,139,250,0.4); }
+    .scroll-hint {
+      margin-top: 60px; opacity: 0.3; font-size: 0.8rem;
+      animation: float 2.5s ease-in-out infinite;
+    }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(8px)} }
+
+    /* ===================== ABOUT ===================== */
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;
+    }
+    .about-text p { margin-bottom: 16px; opacity: 0.85; font-size: 0.95rem; }
+    .info-cards { display: flex; flex-direction: column; gap: 16px; }
+    .info-card {
+      padding: 20px 24px; border-radius: 16px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: border-color 0.3s;
+    }
+    .info-card:hover { border-color: rgba(167,139,250,0.3); }
+    .info-card .label {
+      font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.15em;
+      opacity: 0.45; margin-bottom: 6px;
+    }
+    .info-card .value { font-size: 1rem; font-weight: 500; }
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; gap: 32px; }
+    }
+
+    /* ===================== TIMELINE (Education & Experience) ===================== */
+    .timeline { position: relative; padding-left: 32px; }
+    .timeline::before {
+      content: ''; position: absolute; left: 7px; top: 8px; bottom: 8px;
+      width: 1px; background: linear-gradient(180deg, rgba(167,139,250,0.4), rgba(96,165,250,0.1));
+    }
+    .timeline-item { position: relative; margin-bottom: 40px; }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-item::before {
+      content: ''; position: absolute; left: -32px; top: 8px;
+      width: 15px; height: 15px; border-radius: 50%;
+      background: #0a0a1a; border: 2px solid #a78bfa;
+      box-shadow: 0 0 12px rgba(167,139,250,0.3);
+    }
+    .timeline-item .time {
+      font-size: 0.78rem; opacity: 0.45; letter-spacing: 0.08em;
+      margin-bottom: 4px; font-weight: 500;
+    }
+    .timeline-item .title {
+      font-size: 1.1rem; font-weight: 600; margin-bottom: 4px;
+    }
+    .timeline-item .subtitle {
+      font-size: 0.88rem; opacity: 0.55; margin-bottom: 10px;
+    }
+    .timeline-item .desc {
+      font-size: 0.88rem; opacity: 0.7; line-height: 1.8;
+    }
+    .timeline-item .desc li { margin-bottom: 4px; list-style: none; position: relative; padding-left: 16px; }
+    .timeline-item .desc li::before {
+      content: '✦'; position: absolute; left: 0; font-size: 0.6rem;
+      color: #a78bfa; top: 4px;
+    }
+
+    /* ===================== SKILLS ===================== */
+    .skills-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;
+    }
+    .skill-card {
+      padding: 28px 24px; border-radius: 16px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: transform 0.25s, border-color 0.3s;
+    }
+    .skill-card:hover { transform: translateY(-4px); border-color: rgba(167,139,250,0.3); }
+    .skill-card .icon { font-size: 1.6rem; margin-bottom: 12px; }
+    .skill-card .name { font-size: 1rem; font-weight: 600; margin-bottom: 8px; }
+    .skill-card .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .skill-card .tags span {
+      padding: 3px 10px; border-radius: 999px; font-size: 0.72rem;
+      background: rgba(167,139,250,0.1); border: 1px solid rgba(167,139,250,0.15);
+      opacity: 0.75;
+    }
+
+    /* ===================== HONORS ===================== */
+    .honors-list { display: flex; flex-direction: column; gap: 14px; }
+    .honor-item {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 18px 22px; border-radius: 12px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      transition: border-color 0.3s;
+    }
+    .honor-item:hover { border-color: rgba(251,191,36,0.3); }
+    .honor-item .honor-icon {
+      font-size: 1.2rem; flex-shrink: 0; margin-top: 2px;
+    }
+    .honor-item .honor-text { font-size: 0.92rem; opacity: 0.8; }
+    .honor-item .honor-text strong { color: #fbbf24; }
+
+    /* ===================== PORTFOLIO ===================== */
+    .portfolio-tabs {
+      display: flex; gap: 12px; margin-bottom: 32px; flex-wrap: wrap;
+    }
+    .portfolio-tab {
+      padding: 8px 22px; border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.84rem; cursor: pointer;
+      transition: all 0.25s; background: transparent; color: #e0e0ec;
+    }
+    .portfolio-tab:hover, .portfolio-tab.active {
+      background: linear-gradient(135deg, rgba(167,139,250,0.2), rgba(96,165,250,0.2));
+      border-color: rgba(167,139,250,0.4);
+    }
+    .portfolio-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .portfolio-card {
+      border-radius: 16px; overflow: hidden;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: transform 0.25s, border-color 0.3s;
+      cursor: pointer;
+    }
+    .portfolio-card:hover { transform: translateY(-4px); border-color: rgba(167,139,250,0.3); }
+    .portfolio-card .thumb {
+      height: 200px; display: flex; align-items: center; justify-content: center;
+      font-size: 3rem; position: relative; overflow: hidden;
+    }
+    .portfolio-card .thumb.video-bg { background: linear-gradient(135deg, #1e1b4b, #312e81); }
+    .portfolio-card .thumb.image-bg { background: linear-gradient(135deg, #1e3a5f, #164e63); }
+    .portfolio-card .thumb.poster-bg { background: linear-gradient(135deg, #4a1942, #6b21a8); }
+    .portfolio-card .thumb.ppt-bg { background: linear-gradient(135deg, #1a3c34, #065f46); }
+    .portfolio-card .thumb .play-btn {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: rgba(255,255,255,0.15); backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center;
+      border: 2px solid rgba(255,255,255,0.2);
+    }
+    .portfolio-card .card-body { padding: 18px 20px; }
+    .portfolio-card .card-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; }
+    .portfolio-card .card-meta { font-size: 0.78rem; opacity: 0.45; }
+    .portfolio-card .card-desc { font-size: 0.84rem; opacity: 0.65; margin-top: 8px; line-height: 1.6; }
+
+    /* ===================== CONTACT ===================== */
+    .contact-content {
+      text-align: center; max-width: 500px; margin: 0 auto;
+    }
+    .contact-content p { opacity: 0.7; margin-bottom: 32px; font-size: 0.95rem; }
+    .contact-links {
+      display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;
+    }
+    .contact-btn {
+      padding: 12px 28px; border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      font-size: 0.88rem; font-weight: 500;
+      transition: all 0.25s; display: flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.03);
+    }
+    .contact-btn:hover {
+      background: rgba(167,139,250,0.15); border-color: rgba(167,139,250,0.3);
+    }
+
+    /* ===================== FOOTER ===================== */
+    footer {
+      position: relative; z-index: 1; text-align: center;
+      padding: 40px 24px; font-size: 0.78rem; opacity: 0.3;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+
+    /* ===================== SCROLL REVEAL ===================== */
+    .reveal {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ===================== SHOOTING STAR ===================== */
+    .shooting-star {
+      position: fixed; z-index: 0; pointer-events: none;
+      width: 80px; height: 1px;
+      background: linear-gradient(90deg, rgba(255,255,255,0.6), transparent);
+      animation: shoot 1s linear forwards;
+    }
+    @keyframes shoot {
+      0% { transform: translateX(0) translateY(0) rotate(-35deg); opacity: 1; }
+      100% { transform: translateX(300px) translateY(200px) rotate(-35deg); opacity: 0; }
+    }
+
+    /* ===================== MOBILE TWEAKS ===================== */
+    @media (max-width: 600px) {
+      section { padding: 80px 18px 40px; }
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Star Canvas -->
+  <canvas id="starfield"></canvas>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-inner">
+      <div class="logo">✦ 岳星</div>
+      <ul class="nav-links">
+        <li><a href="#about">关于我</a></li>
+        <li><a href="#education">教育背景</a></li>
+        <li><a href="#experience">实习经历</a></li>
+        <li><a href="#skills">技能</a></li>
+        <li><a href="#honors">荣誉</a></li>
+        <li><a href="#portfolio">作品集</a></li>
+        <li><a href="#contact">联系</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section id="hero">
+    <div class="hero-avatar">星</div>
+    <h1 class="hero-name">岳星</h1>
+    <p class="hero-en">Starlet Yue</p>
+    <p class="hero-tagline">商业化运营 × 数据分析 × 内容策略<br>让数据说话，让创意落地</p>
+    <div class="hero-tags">
+      <span>📊 数据分析</span>
+      <span>📱 平台运营</span>
+      <span>🎨 内容创作</span>
+      <span>🌐 跨文化传播</span>
+    </div>
+    <a href="#contact" class="hero-cta">✉ 与我联系</a>
+    <div class="scroll-hint">↓ 向下探索</div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <h2 class="section-title reveal"><span class="star-icon">✦</span>关于我</h2>
+    <div class="about-grid reveal">
+      <div class="about-text">
+        <p>
+          你好，我是岳星，一个对数据敏感、对创意有执念的年轻人。目前在上海小红书商业化平台实习，参与宝桂组的运营工作。
+        </p>
+        <p>
+          我拥有马来亚大学英语语言研究硕士学位（GPA 3.82/4.0，Distinction），本科毕业于兰州城市学院翻译专业（GPA 3.52/4.0，专业前 5%）。
+        </p>
+        <p>
+          从快手商业化策略运营，到好未来 TikTok 电商投放，再到小红书商业化——我始终在做一件事：用数据驱动增长，用创意连接用户。2026年10月即将赴马来亚大学攻读博士，在此之前希望全身心投入一段有挑战的实习。
+        </p>
+      </div>
+      <div class="info-cards">
+        <div class="info-card">
+          <div class="label">所在地</div>
+          <div class="value">上海</div>
+        </div>
+        <div class="info-card">
+          <div class="label">可实习时间</div>
+          <div class="value">即刻到岗，可实习 9 个月+</div>
+        </div>
+        <div class="info-card">
+          <div class="label">研究方向</div>
+          <div class="value">跨文化能力 · 英语语言研究</div>
+        </div>
+        <div class="info-card">
+          <div class="label">语言能力</div>
+          <div class="value">雅思 7.5 · 专八良好 · CATTI 翻译资格</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education">
+    <h2 class="section-title reveal"><span class="star-icon">✦</span>教育背景</h2>
+    <div class="timeline reveal">
+      <div class="timeline-item">
+        <div class="time">2024.03 — 2025.09</div>
+        <div class="title">马来亚大学 · 英语语言研究</div>
+        <div class="subtitle">硕士 · GPA 3.82/4.0 · With Distinction</div>
+        <ul class="desc">
+          <li>研究方向：跨文化能力</li>
+          <li>以优异成绩毕业，获 Distinction 等级</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <div class="time">2019 — 2023</div>
+        <div class="title">兰州城市学院 · 翻译</div>
+        <div class="subtitle">本科 · GPA 3.52/4.0 · 专业前 5%</div>
+        <ul class="desc">
+          <li>省级科研立项 1 项、校级 2 项</li>
+          <li>获 CATTI 国际版翻译资格证书</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience">
+    <h2 class="section-title reveal"><span class="star-icon">✦</span>实习经历</h2>
+    <div class="timeline reveal">
+      <div class="timeline-item">
+        <div class="time">2026.04 — 至今</div>
+        <div class="title">小红书 · 商业化平台</div>
+        <div class="subtitle">宝桂组实习生</div>
+        <ul class="desc">
+          <li>参与商业化平台运营工作，深入理解平台商业化生态</li>
+          <li>数据驱动运营决策，搭建监控体系与 SOP 流程</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <div class="time">2025.09 — 2025.12</div>
+        <div class="title">快手 · 商业化</div>
+        <div class="subtitle">策略运营实习生 · 上海</div>
+        <ul class="desc">
+          <li>负责耐用消费品行业流量分析，输出行业洞察报告</li>
+          <li>监控广告消耗数据，优化 CPM 投放策略</li>
+          <li>搭建数据看板，为业务团队提供决策支持</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <div class="time">2025.06 — 2025.09</div>
+        <div class="title">Boyne Mountain Resort</div>
+        <div class="subtitle">海外社媒运营 · 美国</div>
+        <ul class="desc">
+          <li>负责 Instagram 账号内容策划与运营</li>
+          <li>3 个月粉丝增长 65%</li>
+          <li>独立完成从创意到发布的完整内容链路</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <div class="time">2024.06 — 2024.10</div>
+        <div class="title">好未来 · ThinkTV</div>
+        <div class="subtitle">TikTok 内容策略 & 数据分析 · 北京</div>
+        <ul class="desc">
+          <li>负责电商广告投放策略，实现 ROAS 15</li>
+          <li>月均 GMV 突破 10w+ 美金</li>
+          <li>从 0 到 1 搭建投放数据分析体系与 SOP</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <h2 class="section-title reveal"><span class="star-icon">✦</span>技能</h2>
+    <div class="skills-grid reveal">
+      <div class="skill-card">
+        <div class="icon">📊</div>
+        <div class="name">数据分析</div>
+        <div class="tags">
+          <span>SQL</span><span>Excel</span><span>透视表</span><span>XLOOKUP</span><span>BI 看板</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="icon">📱</div>
+        <div class="name">平台运营</div>
+        <div class="tags">
+          <span>TikTok</span><span>抖音</span><span>快手</span><span>小红书</span><span>巨量千川</span><span>磁力金牛</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="icon">🎨</div>
+        <div class="name">内容创作</div>
+        <div class="tags">
+          <span>剪映</span><span>CapCut</span><span>即梦 AI</span><span>PS</span><span>Canva</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="icon">🌐</div>
+        <div class="name">语言能力</div>
+        <div class="tags">
+          <span>雅思 7.5</span><span>专八良好</span><span>CATTI</span><span>跨文化传播</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Honors -->
+  <section id="honors">
+    <h2 class="section-title reveal"><span class="star-icon">✦</span>荣誉与证书</h2>
+    <div class="honors-list reveal">
+      <div class="honor-item">
+        <span class="honor-icon">🏆</span>
+        <span class="honor-text"><strong>硕士 Distinction 等级</strong> — 马来亚大学英语语言研究硕士，GPA 3.82/4.0</span>
+      </div>
+      <div class="honor-item">
+        <span class="honor-icon">🎓</span>
+        <span class="honor-text"><strong>专业前 5%</strong> — 兰州城市学院翻译专业本科，GPA 3.52/4.0</span>
+      </div>
+      <div class="honor-item">
+        <span class="honor-icon">📜</span>
+        <span class="honor-text"><strong>CATTI 国际版翻译资格证书</strong> — 中国翻译专业资格认证</span>
+      </div>
+      <div class="honor-item">
+        <span class="honor-icon">🌟</span>
+        <span class="honor-text"><strong>雅思 7.5 分</strong> — 英语语言能力证明</span>
+      </div>
+      <div class="honor-item">
+        <span class="honor-icon">📚</span>
+        <span class="honor-text"><strong>省级科研立项 1 项、校级 2 项</strong> — 硕士期间参与跨文化能力方向研究</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+  <section id="portfolio">
+    <h2 class="section-title reveal"><span class="star-icon">✦</span>作品集</h2>
+    <div class="portfolio-tabs reveal">
+      <button class="portfolio-tab active" data-filter="all">全部</button>
+      <button class="portfolio-tab" data-filter="video">视频</button>
+      <button class="portfolio-tab" data-filter="image">图文</button>
+      <button class="portfolio-tab" data-filter="poster">海报</button>
+      <button class="portfolio-tab" data-filter="ppt">PPT</button>
+    </div>
+    <div class="portfolio-grid reveal" id="portfolioGrid">
+
+      <!-- Video Card 1 -->
+      <div class="portfolio-card" data-type="video">
+        <div class="thumb video-bg">
+          <div class="play-btn">▶</div>
+        </div>
+        <div class="card-body">
+          <div class="card-title">TikTok 电商广告投放案例</div>
+          <div class="card-meta">视频 · 好未来 ThinkTV</div>
+          <div class="card-desc">负责电商广告投放策略优化，实现 ROAS 15，月均 GMV 突破 10w+ 美金的实战案例展示。</div>
+        </div>
+      </div>
+
+      <!-- Image Card 1 -->
+      <div class="portfolio-card" data-type="image">
+        <div class="thumb image-bg">📸</div>
+        <div class="card-body">
+          <div class="card-title">Instagram 社媒运营案例</div>
+          <div class="card-meta">图文 · Boyne Mountain Resort</div>
+          <div class="card-desc">3 个月粉丝增长 65% 的社交媒体运营成果，展示内容策略与创意执行能力。</div>
+        </div>
+      </div>
+
+      <!-- Poster Card 1 -->
+      <div class="portfolio-card" data-type="poster">
+        <div class="thumb poster-bg">🎨</div>
+        <div class="card-body">
+          <div class="card-title">商业化活动海报设计</div>
+          <div class="card-meta">海报 · 小红书</div>
+          <div class="card-desc">为商业化平台运营活动设计的系列海报，融合品牌调性与数据可视化元素。</div>
+        </div>
+      </div>
+
+      <!-- PPT Card 1 -->
+      <div class="portfolio-card" data-type="ppt">
+        <div class="thumb ppt-bg">📋</div>
+        <div class="card-body">
+          <div class="card-title">快手耐用消费品行业洞察报告</div>
+          <div class="card-meta">PPT · 快手商业化</div>
+          <div class="card-desc">耐用消费品行业流量分析报告，包含数据洞察、竞品分析与投放策略建议。</div>
+        </div>
+      </div>
+
+      <!-- Video Card 2 -->
+      <div class="portfolio-card" data-type="video">
+        <div class="thumb video-bg">
+          <div class="play-btn">▶</div>
+        </div>
+        <div class="card-body">
+          <div class="card-title">跨文化能力研究分享</div>
+          <div class="card-meta">视频 · 马来亚大学</div>
+          <div class="card-desc">硕士研究期间关于跨文化能力主题的学术分享与展示录像。</div>
+        </div>
+      </div>
+
+      <!-- PPT Card 2 -->
+      <div class="portfolio-card" data-type="ppt">
+        <div class="thumb ppt-bg">📋</div>
+        <div class="card-body">
+          <div class="card-title">商业化数据看板搭建方案</div>
+          <div class="card-meta">PPT · 小红书</div>
+          <div class="card-desc">从 0 到 1 搭建商业化数据监控体系的方案，包括指标体系设计与可视化呈现。</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2 class="section-title reveal"><span class="star-icon">✦</span>联系我</h2>
+    <div class="contact-content reveal">
+      <p>无论是实习机会、项目合作还是单纯的交流，我都很乐意和你聊聊。</p>
+      <div class="contact-links">
+        <a href="mailto:yuexing@xiaohongshu.com" class="contact-btn">✉ 邮件</a>
+        <a href="tel:+8613000000000" class="contact-btn">📱 电话</a>
+        <a href="#" class="contact-btn">💬 微信</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>✦ 岳星 · Starlet Yue — 2026 · 愿每一颗星星都有它的位置</p>
+  </footer>
+
+  <!-- ===================== JAVASCRIPT ===================== -->
+  <script>
+    // ---- Star Field ----
+    (function() {
+      const canvas = document.getElementById('starfield');
+      const ctx = canvas.getContext('2d');
+      let stars = [];
+      let w, h;
+
+      function resize() {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+      }
+
+      function createStars(count) {
+        stars = [];
+        for (let i = 0; i < count; i++) {
+          stars.push({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            r: Math.random() * 1.5 + 0.3,
+            a: Math.random(),
+            da: (Math.random() - 0.5) * 0.01,
+            color: Math.random() > 0.85 ? 
+              `hsla(${220 + Math.random() * 60}, 70%, 80%, ` : 
+              `hsla(0, 0%, 100%, `
+          });
+        }
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, w, h);
+        for (const s of stars) {
+          s.a += s.da;
+          if (s.a > 1 || s.a < 0.1) s.da *= -1;
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+          ctx.fillStyle = s.color + s.a + ')';
+          ctx.fill();
+        }
+        requestAnimationFrame(draw);
+      }
+
+      resize();
+      createStars(Math.min(250, Math.floor(w * h / 5000)));
+      draw();
+
+      window.addEventListener('resize', () => {
+        resize();
+        createStars(Math.min(250, Math.floor(w * h / 5000)));
+      });
+
+      // Shooting star every ~8 seconds
+      setInterval(() => {
+        const star = document.createElement('div');
+        star.className = 'shooting-star';
+        star.style.top = Math.random() * 40 + '%';
+        star.style.left = Math.random() * 60 + '%';
+        document.body.appendChild(star);
+        setTimeout(() => star.remove(), 1200);
+      }, 8000);
+    })();
+
+    // ---- Scroll Reveal ----
+    (function() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.08 });
+
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    })();
+
+    // ---- Portfolio Filter ----
+    (function() {
+      const tabs = document.querySelectorAll('.portfolio-tab');
+      const cards = document.querySelectorAll('.portfolio-card');
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          tabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          const filter = tab.dataset.filter;
+          cards.forEach(card => {
+            const show = filter === 'all' || card.dataset.type === filter;
+            card.style.display = show ? '' : 'none';
+          });
+        });
+      });
+    })();
+
+    // ---- Nav active state ----
+    (function() {
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('.nav-links a');
+
+      window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+          const top = section.offsetTop - 100;
+          if (window.scrollY >= top) current = section.getAttribute('id');
+        });
+        navLinks.forEach(link => {
+          link.style.opacity = link.getAttribute('href') === '#' + current ? '1' : '0.55';
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>
